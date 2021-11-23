@@ -14,10 +14,4 @@ public class DemoApplication {
 
 }
 
-@RestController
-class HelloController {
-    @GetMapping(value = "/")
-    String hello() {
-        return "Hello World";
-    }
-}
+
