@@ -52,5 +52,10 @@ public class EMSController {
     public List<User> fetchAllUsers() {
         return employeeService.fetchAllUsers();
     }
+
+    @GetMapping("/fetchAllDepartments") // Just for demo purpose
+    public String fetchDepartments() {
+        return "Departments";
+    }
 }
 
