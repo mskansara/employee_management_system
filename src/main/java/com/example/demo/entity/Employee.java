@@ -25,13 +25,19 @@ public class Employee {
     @Column(name = "password")
     String password;
 
+    @Column(name = "enabled")
+    boolean enabled;
+
+    @Column(name = "role")
+    String role;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     User user;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    Role role;
+//    @ManyToOne
+//    @JoinColumn(name = "role_id")
+//    Role role;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -77,17 +83,33 @@ public class Employee {
         return user;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public Department getDepartment() {
         return department;

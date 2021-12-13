@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         employee.setCompanyEmail(employeeDto.getCompanyEmail());
         employee.setPassword(employeeDto.getPassword());
         employee.setUser(findUserById(employeeDto.getUserId()));
-        employee.setRole(findRoleById(employeeDto.getRoleId()));
+//        employee.setRole(findRoleById(employeeDto.getRoleId()));
         employee.setDepartment(findDepartmentById(employeeDto.getDepartmentId()));
         employee.setEmployee(findEmployeeById(employeeDto.getManagerId()));
         return em.merge(employee);
@@ -77,5 +78,14 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public List<User> fetchAllUsers() {
         String jpql = "select u from User u";
         return (List<User>)em.createQuery(jpql).getResultList();
+    }
+
+    @Override
+    public Employee findEmployeeByEmail(String email) {
+        String jpql = "select e from Employee e where e.companyEmail = :email";
+        Query query  = em.createQuery(jpql);
+        query.setParameter("email", email);
+        Employee employee = (Employee)query.getSingleResult();
+        return employee;
     }
 }

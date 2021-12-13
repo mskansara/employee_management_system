@@ -20,4 +20,5 @@ public interface EmployeeRepository {
     public Department findDepartmentById(int departmentId);
     public User findUserById(int userId);
     public List<User> fetchAllUsers();
+    public Employee findEmployeeByEmail(String email);
 }

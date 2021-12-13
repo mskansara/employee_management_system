@@ -7,7 +7,7 @@ public class EmployeeDto {
     Date dateOfJoining;
     String companyEmail;
     String password;
-    int roleId;
+    String role;
     int userId;
     int departmentId;
     int managerId;
@@ -36,12 +36,12 @@ public class EmployeeDto {
         this.password = password;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getUserId() {
